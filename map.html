@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_9ad0b807d12e9a21ac9994fef8094727 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<link rel="stylesheet" href="assets/plex.css">
+<style>
+  :root {
+    --ac-paper-0: #FDFBF7; --ac-paper-1: #FBF8F3; --ac-paper-2: #F7F3EC; --ac-paper-3: #F0EAE0;
+    --ac-line: #E7E0D5; --ac-line-strong: #D8CFC0;
+    --ac-ink-0: #1F1B15; --ac-ink-1: #3D382F; --ac-ink-2: #5E5649; --ac-ink-3: #756D62;
+    --ac-accent: #135E63; --ac-accent-hover: #0F4E52; --ac-on-accent: #FBF8F3;
+    --ac-shadow-popover: 0 6px 20px rgba(31, 27, 21, 0.10), 0 1px 3px rgba(31, 27, 21, 0.06);
+    --ac-font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    --ac-font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    --tile-filter: grayscale(1) sepia(0.2) contrast(0.72) brightness(1.16);
+  }
+  :root[data-theme="dark"] {
+    --ac-paper-0: #221E18; --ac-paper-1: #16130F; --ac-paper-2: #100E0B; --ac-paper-3: #2B2620;
+    --ac-line: #322C23; --ac-line-strong: #423B2F;
+    --ac-ink-0: #EDE6D9; --ac-ink-1: #C5BAA8; --ac-ink-2: #A79C8C; --ac-ink-3: #908678;
+    --ac-accent: #4FB8BE; --ac-accent-hover: #6FC9CE; --ac-on-accent: #0F2E30;
+    --ac-shadow-popover: 0 6px 20px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.30);
+    --tile-filter: grayscale(1) invert(1) sepia(0.3) brightness(0.8) contrast(0.9);
+  }
+
+  html, body, .leaflet-container { background: var(--ac-paper-2); }
+  .leaflet-container { font-family: var(--ac-font-sans); color: var(--ac-ink-1); }
+  .leaflet-container a { color: var(--ac-accent); }
+  .leaflet-tile-pane { filter: var(--tile-filter); }   /* OSM colours -> warm greys */
+
+  .journey-line { stroke: var(--ac-accent); }
+
+  .stop-icon { background: none; border: 0; }
+  .stop-marker {
+    box-sizing: border-box; width: 24px; height: 24px;
+    display: grid; place-items: center;
+    font-family: var(--ac-font-mono); font-size: 11px; font-weight: 500; line-height: 1;
+    color: var(--ac-accent); background: var(--ac-paper-0);
+    border: 1px solid var(--ac-accent); border-radius: 2px;
+  }
+  .stop-marker.is-now { background: var(--ac-accent); color: var(--ac-on-accent); }
+
+  .leaflet-popup-content-wrapper {
+    background: var(--ac-paper-0); color: var(--ac-ink-1);
+    border: 1px solid var(--ac-line-strong); border-radius: 4px;
+    box-shadow: var(--ac-shadow-popover);
+  }
+  .leaflet-popup-tip { background: var(--ac-paper-0); border: 1px solid var(--ac-line-strong); box-shadow: none; }
+  .leaflet-popup-content { margin: 12px 16px; font-size: 13px; line-height: 1.5; }
+  .leaflet-container a.leaflet-popup-close-button { color: var(--ac-ink-3); }
+  .leaflet-container a.leaflet-popup-close-button:hover { color: var(--ac-ink-0); }
+  .pop-meta {
+    font-family: var(--ac-font-mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--ac-accent);
+  }
+  .pop-title { margin-top: 4px; font-size: 14px; font-weight: 500; color: var(--ac-ink-0); }
+  .pop-text  { color: var(--ac-ink-2); }
+  .pop-area  { margin-top: 4px; font-family: var(--ac-font-mono); font-size: 11px; color: var(--ac-ink-3); }
+
+  .leaflet-tooltip {
+    background: var(--ac-paper-0); color: var(--ac-ink-0);
+    border: 1px solid var(--ac-line-strong); border-radius: 2px; box-shadow: none;
+    font-family: var(--ac-font-sans); font-size: 12px; padding: 4px 8px;
+  }
+  .leaflet-tooltip-top::before    { border-top-color: var(--ac-line-strong); }
+  .leaflet-tooltip-bottom::before { border-bottom-color: var(--ac-line-strong); }
+  .leaflet-tooltip-left::before   { border-left-color: var(--ac-line-strong); }
+  .leaflet-tooltip-right::before  { border-right-color: var(--ac-line-strong); }
+
+  .leaflet-bar, .leaflet-touch .leaflet-bar {
+    border: 1px solid var(--ac-line-strong); border-radius: 4px; box-shadow: none;
+  }
+  .leaflet-bar a, .leaflet-bar a:hover {
+    background: var(--ac-paper-0); color: var(--ac-ink-1); border-bottom-color: var(--ac-line);
+  }
+  .leaflet-bar a:hover { background: var(--ac-paper-3); }
+  .leaflet-bar a.leaflet-disabled { color: var(--ac-ink-3); background: var(--ac-paper-2); }
+  .leaflet-container .leaflet-control-attribution {
+    background: var(--ac-paper-0); color: var(--ac-ink-3); font-size: 11px;
+  }
+  :focus-visible { outline: 2px solid var(--ac-accent); outline-offset: 2px; }
+</style>
+    
+            <div class="folium-map" id="map_9ad0b807d12e9a21ac9994fef8094727" ></div>
+        
+</body>
+<script>
+    
+    
+document.addEventListener('DOMContentLoaded', function () {
+  var map = map_9ad0b807d12e9a21ac9994fef8094727;
+  var markers = [marker_51888d7a2d74c8a5a89e60faf163451b, marker_0664b15c279aac424317970921c1a4f2, marker_7c6a411057231d4eea3f7c15b483c1eb, marker_b62544466d120e59409daf1b5cf1569a, marker_9e1c40ce1bc3ac9c026deab309b7e0c6, marker_95e731c57e8eb4504374524a3ec65a6f];
+  var bounds = L.latLngBounds([[52.45472, 13.29641], [52.4932, 13.52462], [52.52478, 13.40384], [52.52361, 13.37326], [52.54078, 13.43855], [52.48546, 13.3382]]);
+  var root = document.documentElement;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var framed = true;   // true while the map still shows the whole path
+
+  function fitAll(animate) {
+    framed = true;
+    map.closePopup();
+    if (animate && !reduceMotion) map.flyToBounds(bounds, { padding: [40, 40], duration: 0.8 });
+    else map.fitBounds(bounds, { padding: [40, 40] });
+  }
+
+  function show(marker) {
+    framed = false;
+    var zoom = Math.max(map.getZoom(), 14);
+    map.closePopup();
+    map.once('moveend', function () { marker.openPopup(); });
+    if (reduceMotion) map.setView(marker.getLatLng(), zoom);
+    else map.flyTo(marker.getLatLng(), zoom, { duration: 0.8 });
+  }
+
+  function setTheme(mode) { root.dataset.theme = mode; }
+
+  setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+  // The page may load this map while it is still hidden or tiny; re-frame once it has its real size.
+  map.on('dragstart', function () { framed = false; });
+  window.addEventListener('resize', function () {
+    map.invalidateSize();
+    if (framed) fitAll(false);
+  });
+  window.addEventListener('load', function () { map.invalidateSize(); fitAll(false); });
+
+  // Messages from the page that embeds this map.
+  window.addEventListener('message', function (event) {
+    if (event.source !== window.parent) return;
+    var msg = event.data || {};
+    if (msg.type === 'theme' && (msg.mode === 'light' || msg.mode === 'dark')) setTheme(msg.mode);
+    if (msg.type === 'focus' && Number.isInteger(msg.index) && markers[msg.index]) show(markers[msg.index]);
+    if (msg.type === 'reset') fitAll(true);
+  });
+});
+    
+            var map_9ad0b807d12e9a21ac9994fef8094727 = L.map(
+                "map_9ad0b807d12e9a21ac9994fef8094727",
+                {
+                    center: [0.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 1,
+  "zoomControl": true,
+  "preferCanvas": false,
+  "scrollWheelZoom": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_315706a761f94aaf8f801aebc5865986 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_315706a761f94aaf8f801aebc5865986.addTo(map_9ad0b807d12e9a21ac9994fef8094727);
+        
+    
+            var poly_line_a83872ada35255da6b31328828ba84e0 = L.polyline(
+                [[52.45472, 13.29641], [52.4932, 13.52462], [52.52478, 13.40384], [52.52361, 13.37326], [52.54078, 13.43855], [52.48546, 13.3382]],
+                {"bubblingMouseEvents": true, "className": "journey-line", "color": "#3388ff", "dashArray": "2 6", "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_9ad0b807d12e9a21ac9994fef8094727);
+        
+    
+            var marker_51888d7a2d74c8a5a89e60faf163451b = L.marker(
+                [52.45472, 13.29641],
+                {
+}
+            ).addTo(map_9ad0b807d12e9a21ac9994fef8094727);
+        
+    
+            var div_icon_e123de57de2310e4da0888e7a09cffa7 = L.divIcon({
+  "html": "\u003cdiv class=\"stop-marker\"\u003e01\u003c/div\u003e",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "stop-icon",
+});
+        
+    
+        var popup_fd7b50292726fb9c9f8dfddccef76e7b = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_8ed56cb30bb063846069b184f8a88f56 = $(`<div id="html_8ed56cb30bb063846069b184f8a88f56" style="width: 100.0%; height: 100.0%;"><div class="pop"><div class="pop-meta">2014 – 2020</div><div class="pop-title">Freie Universität Berlin</div><div class="pop-text">Teacher training, Biology &amp; Chemistry</div><div class="pop-area">Dahlem</div></div></div>`)[0];
+                popup_fd7b50292726fb9c9f8dfddccef76e7b.setContent(html_8ed56cb30bb063846069b184f8a88f56);
+            
+        
+
+        marker_51888d7a2d74c8a5a89e60faf163451b.bindPopup(popup_fd7b50292726fb9c9f8dfddccef76e7b)
+        ;
+
+        
+    
+    
+            marker_51888d7a2d74c8a5a89e60faf163451b.bindTooltip(
+                `<div>
+                     Freie Universität Berlin
+                 </div>`,
+                {
+  "direction": "top",
+  "offset": [0, -14],
+  "sticky": true,
+}
+            );
+        
+    
+                marker_51888d7a2d74c8a5a89e60faf163451b.setIcon(div_icon_e123de57de2310e4da0888e7a09cffa7);
+            
+    
+            var marker_0664b15c279aac424317970921c1a4f2 = L.marker(
+                [52.4932, 13.52462],
+                {
+}
+            ).addTo(map_9ad0b807d12e9a21ac9994fef8094727);
+        
+    
+            var div_icon_38a0cb9cf1cd989a0e28c2f5f64b8b4c = L.divIcon({
+  "html": "\u003cdiv class=\"stop-marker\"\u003e02\u003c/div\u003e",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "stop-icon",
+});
+        
+    
+        var popup_1c5fd6cc94d86aef22f37c62f38f86bb = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_22fede88023d51c702b5746b6a1d70a1 = $(`<div id="html_22fede88023d51c702b5746b6a1d70a1" style="width: 100.0%; height: 100.0%;"><div class="pop"><div class="pop-meta">2020 – 2024</div><div class="pop-title">HTW Berlin</div><div class="pop-text">Bachelor, Business Administration</div><div class="pop-area">Karlshorst</div></div></div>`)[0];
+                popup_1c5fd6cc94d86aef22f37c62f38f86bb.setContent(html_22fede88023d51c702b5746b6a1d70a1);
+            
+        
+
+        marker_0664b15c279aac424317970921c1a4f2.bindPopup(popup_1c5fd6cc94d86aef22f37c62f38f86bb)
+        ;
+
+        
+    
+    
+            marker_0664b15c279aac424317970921c1a4f2.bindTooltip(
+                `<div>
+                     HTW Berlin
+                 </div>`,
+                {
+  "direction": "top",
+  "offset": [0, -14],
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0664b15c279aac424317970921c1a4f2.setIcon(div_icon_38a0cb9cf1cd989a0e28c2f5f64b8b4c);
+            
+    
+            var marker_7c6a411057231d4eea3f7c15b483c1eb = L.marker(
+                [52.52478, 13.40384],
+                {
+}
+            ).addTo(map_9ad0b807d12e9a21ac9994fef8094727);
+        
+    
+            var div_icon_a5ba28715938fc03912cd85adc2d7677 = L.divIcon({
+  "html": "\u003cdiv class=\"stop-marker\"\u003e03\u003c/div\u003e",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "stop-icon",
+});
+        
+    
+        var popup_105c20e651d7996f163dc07170b287ae = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_841cee5b429dba57fe15f4b714967790 = $(`<div id="html_841cee5b429dba57fe15f4b714967790" style="width: 100.0%; height: 100.0%;"><div class="pop"><div class="pop-meta">2021 – 2022</div><div class="pop-title">Suxeedo</div><div class="pop-text">Product Marketing Consultant</div><div class="pop-area">Mitte</div></div></div>`)[0];
+                popup_105c20e651d7996f163dc07170b287ae.setContent(html_841cee5b429dba57fe15f4b714967790);
+            
+        
+
+        marker_7c6a411057231d4eea3f7c15b483c1eb.bindPopup(popup_105c20e651d7996f163dc07170b287ae)
+        ;
+
+        
+    
+    
+            marker_7c6a411057231d4eea3f7c15b483c1eb.bindTooltip(
+                `<div>
+                     Suxeedo
+                 </div>`,
+                {
+  "direction": "top",
+  "offset": [0, -14],
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7c6a411057231d4eea3f7c15b483c1eb.setIcon(div_icon_a5ba28715938fc03912cd85adc2d7677);
+            
+    
+            var marker_b62544466d120e59409daf1b5cf1569a = L.marker(
+                [52.52361, 13.37326],
+                {
+}
+            ).addTo(map_9ad0b807d12e9a21ac9994fef8094727);
+        
+    
+            var div_icon_d5a42f6f24385b60d5e476bc8d0db0a9 = L.divIcon({
+  "html": "\u003cdiv class=\"stop-marker\"\u003e04\u003c/div\u003e",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "stop-icon",
+});
+        
+    
+        var popup_8a670ea7dc888582dfacf8a4d5b3573b = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_22667b782abe758797dbdd24b7ba3b20 = $(`<div id="html_22667b782abe758797dbdd24b7ba3b20" style="width: 100.0%; height: 100.0%;"><div class="pop"><div class="pop-meta">2022 – 2023</div><div class="pop-title">PwC Deutschland</div><div class="pop-text">Product Owner</div><div class="pop-area">Mitte</div></div></div>`)[0];
+                popup_8a670ea7dc888582dfacf8a4d5b3573b.setContent(html_22667b782abe758797dbdd24b7ba3b20);
+            
+        
+
+        marker_b62544466d120e59409daf1b5cf1569a.bindPopup(popup_8a670ea7dc888582dfacf8a4d5b3573b)
+        ;
+
+        
+    
+    
+            marker_b62544466d120e59409daf1b5cf1569a.bindTooltip(
+                `<div>
+                     PwC Deutschland
+                 </div>`,
+                {
+  "direction": "top",
+  "offset": [0, -14],
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b62544466d120e59409daf1b5cf1569a.setIcon(div_icon_d5a42f6f24385b60d5e476bc8d0db0a9);
+            
+    
+            var marker_9e1c40ce1bc3ac9c026deab309b7e0c6 = L.marker(
+                [52.54078, 13.43855],
+                {
+}
+            ).addTo(map_9ad0b807d12e9a21ac9994fef8094727);
+        
+    
+            var div_icon_8584e69cafa31aed5e0833772fdc396d = L.divIcon({
+  "html": "\u003cdiv class=\"stop-marker\"\u003e05\u003c/div\u003e",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "stop-icon",
+});
+        
+    
+        var popup_93ae5b3687a2bfa7291bd86ba1d07698 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_dd88737745b3632290bddd4dd8a3dc18 = $(`<div id="html_dd88737745b3632290bddd4dd8a3dc18" style="width: 100.0%; height: 100.0%;"><div class="pop"><div class="pop-meta">since 2024</div><div class="pop-title">Scheer IMC</div><div class="pop-text">Product Owner, remote</div><div class="pop-area">Prenzlauer Berg</div></div></div>`)[0];
+                popup_93ae5b3687a2bfa7291bd86ba1d07698.setContent(html_dd88737745b3632290bddd4dd8a3dc18);
+            
+        
+
+        marker_9e1c40ce1bc3ac9c026deab309b7e0c6.bindPopup(popup_93ae5b3687a2bfa7291bd86ba1d07698)
+        ;
+
+        
+    
+    
+            marker_9e1c40ce1bc3ac9c026deab309b7e0c6.bindTooltip(
+                `<div>
+                     Scheer IMC
+                 </div>`,
+                {
+  "direction": "top",
+  "offset": [0, -14],
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9e1c40ce1bc3ac9c026deab309b7e0c6.setIcon(div_icon_8584e69cafa31aed5e0833772fdc396d);
+            
+    
+            var marker_95e731c57e8eb4504374524a3ec65a6f = L.marker(
+                [52.48546, 13.3382],
+                {
+}
+            ).addTo(map_9ad0b807d12e9a21ac9994fef8094727);
+        
+    
+            var div_icon_0b106287d392ae10c2ca639e14dae490 = L.divIcon({
+  "html": "\u003cdiv class=\"stop-marker is-now\"\u003e06\u003c/div\u003e",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "stop-icon",
+});
+        
+    
+        var popup_3d46c34e327edded23061c935ee14787 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_074f7237f4215c211292c7c9c7657f60 = $(`<div id="html_074f7237f4215c211292c7c9c7657f60" style="width: 100.0%; height: 100.0%;"><div class="pop"><div class="pop-meta">since 2026</div><div class="pop-title">HWR Berlin</div><div class="pop-text">M.Sc. Business Intelligence &amp; Process Management</div><div class="pop-area">Schöneberg</div></div></div>`)[0];
+                popup_3d46c34e327edded23061c935ee14787.setContent(html_074f7237f4215c211292c7c9c7657f60);
+            
+        
+
+        marker_95e731c57e8eb4504374524a3ec65a6f.bindPopup(popup_3d46c34e327edded23061c935ee14787)
+        ;
+
+        
+    
+    
+            marker_95e731c57e8eb4504374524a3ec65a6f.bindTooltip(
+                `<div>
+                     HWR Berlin
+                 </div>`,
+                {
+  "direction": "top",
+  "offset": [0, -14],
+  "sticky": true,
+}
+            );
+        
+    
+                marker_95e731c57e8eb4504374524a3ec65a6f.setIcon(div_icon_0b106287d392ae10c2ca639e14dae490);
+            
+    
+            map_9ad0b807d12e9a21ac9994fef8094727.fitBounds(
+                [[52.45472, 13.29641], [52.4932, 13.52462], [52.52478, 13.40384], [52.52361, 13.37326], [52.54078, 13.43855], [52.48546, 13.3382]],
+                {"padding": [40, 40]}
+            );
+        
+</script>
+</html>

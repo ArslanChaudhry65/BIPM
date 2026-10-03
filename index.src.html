@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arslan Chaudhry · My path to BIPM</title>
+<meta name="description" content="From the lab bench to the backlog, and now to the data: how I got to the BIPM master at HWR Berlin.">
+<style>
+/* FONTS_PLACEHOLDER */
+
+/* ============================================================
+   Tokens: copied from design-identity assets/tokens.css
+   ============================================================ */
+:root {
+  --ac-paper-0: #FDFBF7;
+  --ac-paper-1: #FBF8F3;
+  --ac-paper-2: #F7F3EC;
+  --ac-paper-3: #F0EAE0;
+  --ac-line: #E7E0D5;
+  --ac-line-strong: #D8CFC0;
+  --ac-ink-0: #1F1B15;
+  --ac-ink-1: #3D382F;
+  --ac-ink-2: #5E5649;
+  --ac-ink-3: #756D62;
+
+  --ac-accent: #135E63;
+  --ac-accent-hover: #0F4E52;
+  --ac-accent-tint: #DFEDED;
+  --ac-accent-tint-line: #BCD9DA;
+  --ac-on-accent: #FBF8F3;
+  --ac-on-tint: #0C4448;
+
+  --ac-cat-1: var(--ac-accent);
+  --ac-cat-1-tint: var(--ac-accent-tint);
+  --ac-cat-1-on-tint: var(--ac-on-tint);
+  --ac-cat-2: #8A6212;
+  --ac-cat-2-tint: #F3EADC;
+  --ac-cat-2-on-tint: #573B00;
+
+  --ac-font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --ac-font-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+  --ac-font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --ac-text-micro: 11px;
+  --ac-text-caption: 12px;
+  --ac-text-small: 13px;
+  --ac-text-body: 14px;
+  --ac-text-body-lg: 16px;
+  --ac-text-subheading: 18px;
+  --ac-text-heading: 20px;
+  --ac-text-heading-lg: 24px;
+  --ac-text-title: 30px;
+  --ac-text-display: 38px;
+  --ac-text-display-lg: 48px;
+
+  --ac-leading-display: 1.15;
+  --ac-leading-heading: 1.26;
+  --ac-leading-ui: 1.5;
+  --ac-leading-prose: 1.75;
+  --ac-leading-mono: 1.45;
+
+  --ac-tracking-display: -0.022em;
+  --ac-tracking-heading: -0.015em;
+  --ac-tracking-normal: 0;
+  --ac-tracking-label: 0.05em;
+
+  --ac-weight-regular: 400;
+  --ac-weight-medium: 500;
+  --ac-weight-semibold: 600;
+
+  --ac-space-1: 4px;
+  --ac-space-2: 8px;
+  --ac-space-3: 12px;
+  --ac-space-4: 16px;
+  --ac-space-5: 20px;
+  --ac-space-6: 24px;
+  --ac-space-8: 32px;
+  --ac-space-10: 40px;
+  --ac-space-14: 56px;
+  --ac-space-18: 72px;
+
+  --ac-radius-sm: 2px;
+  --ac-radius: 4px;
+  --ac-radius-lg: 8px;
+  --ac-hairline: 1px;
+  --ac-rule-accent: 2px;
+  --ac-focus-ring: 2px;
+
+  --ac-dur-fast: 120ms;
+  --ac-dur: 200ms;
+  --ac-ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ac-paper-0: #221E18;
+    --ac-paper-1: #16130F;
+    --ac-paper-2: #100E0B;
+    --ac-paper-3: #2B2620;
+    --ac-line: #322C23;
+    --ac-line-strong: #423B2F;
+    --ac-ink-0: #EDE6D9;
+    --ac-ink-1: #C5BAA8;
+    --ac-ink-2: #A79C8C;
+    --ac-ink-3: #908678;
+    --ac-accent: #4FB8BE;
+    --ac-accent-hover: #6FC9CE;
+    --ac-accent-tint: #123033;
+    --ac-accent-tint-line: #1E4B4F;
+    --ac-on-accent: #0F2E30;
+    --ac-on-tint: #7FD3D8;
+    --ac-cat-2: #D6AA45;
+    --ac-cat-2-tint: #2E230B;
+    --ac-cat-2-on-tint: #E2BC6C;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ac-paper-0: #221E18;
+  --ac-paper-1: #16130F;
+  --ac-paper-2: #100E0B;
+  --ac-paper-3: #2B2620;
+  --ac-line: #322C23;
+  --ac-line-strong: #423B2F;
+  --ac-ink-0: #EDE6D9;
+  --ac-ink-1: #C5BAA8;
+  --ac-ink-2: #A79C8C;
+  --ac-ink-3: #908678;
+  --ac-accent: #4FB8BE;
+  --ac-accent-hover: #6FC9CE;
+  --ac-accent-tint: #123033;
+  --ac-accent-tint-line: #1E4B4F;
+  --ac-on-accent: #0F2E30;
+  --ac-on-tint: #7FD3D8;
+  --ac-cat-2: #D6AA45;
+  --ac-cat-2-tint: #2E230B;
+  --ac-cat-2-on-tint: #E2BC6C;
+}
+
+/* ============================================================
+   Page shell
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--ac-paper-1);
+  color: var(--ac-ink-1);
+  font-family: var(--ac-font-sans);
+  font-size: var(--ac-text-body);
+  line-height: var(--ac-leading-ui);
+}
+.wrap {
+  max-width: 960px; margin: 0 auto;
+  padding: 0 var(--ac-space-6) var(--ac-space-18);
+  color: var(--ac-ink-0);
+}
+img { display: block; max-width: 100%; }
+
+a { color: var(--ac-accent); text-decoration: underline; text-decoration-thickness: var(--ac-hairline); text-underline-offset: var(--ac-space-1); }
+a:hover { color: var(--ac-accent-hover); }
+:focus-visible { outline: var(--ac-focus-ring) solid var(--ac-accent); outline-offset: var(--ac-space-1); }
+
+.mono { font-family: var(--ac-font-mono); }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+/* Header ---------------------------------------------------- */
+.top {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--ac-space-4);
+  padding: var(--ac-space-5) 0;
+  border-bottom: 1px solid var(--ac-line);
+}
+.wordmark {
+  font-size: var(--ac-text-body); font-weight: var(--ac-weight-semibold);
+  color: var(--ac-ink-0); letter-spacing: var(--ac-tracking-normal);
+}
+.theme-toggle {
+  display: inline-flex; align-items: center; gap: var(--ac-space-1);
+  font-family: var(--ac-font-mono); font-size: var(--ac-text-micro);
+  text-transform: uppercase; letter-spacing: var(--ac-tracking-label);
+  color: var(--ac-ink-2); background: transparent;
+  border: 1px solid var(--ac-line-strong); border-radius: var(--ac-radius);
+  padding: var(--ac-space-1) var(--ac-space-2); cursor: pointer;
+}
+.theme-toggle:hover { background: var(--ac-paper-3); color: var(--ac-ink-1); }
+.theme-toggle:focus-visible { outline: var(--ac-focus-ring) solid var(--ac-accent); outline-offset: var(--ac-space-1); }
+
+/* Shared type ----------------------------------------------- */
+.eyebrow {
+  margin: 0 0 var(--ac-space-3);
+  font-family: var(--ac-font-mono); font-size: var(--ac-text-micro);
+  font-weight: var(--ac-weight-regular);
+  text-transform: uppercase; letter-spacing: var(--ac-tracking-label);
+  color: var(--ac-ink-3);
+}
+h1, h2 { color: var(--ac-ink-0); font-weight: var(--ac-weight-medium); text-wrap: balance; margin: 0; }
+h2 {
+  font-size: var(--ac-text-heading-lg); line-height: var(--ac-leading-heading);
+  letter-spacing: var(--ac-tracking-heading);
+}
+.lead {
+  max-width: 65ch; margin: var(--ac-space-3) 0 0;
+  font-size: var(--ac-text-body-lg); line-height: var(--ac-leading-ui); color: var(--ac-ink-2);
+}
+
+section {
+  border-top: 1px solid var(--ac-line);
+  padding-top: var(--ac-space-6); margin-top: var(--ac-space-14);
+}
+.section-body { margin-top: var(--ac-space-8); }
+
+/* Hero ------------------------------------------------------ */
+.hero {
+  display: grid; grid-template-columns: minmax(0, 1fr) 240px;
+  gap: var(--ac-space-10); align-items: end;
+  padding-top: var(--ac-space-14);
+}
+.hero h1 {
+  font-size: var(--ac-text-display-lg); line-height: var(--ac-leading-display);
+  letter-spacing: var(--ac-tracking-display);
+}
+.hero .lead { margin-top: var(--ac-space-5); }
+
+/* Portrait -------------------------------------------------- */
+.portrait { margin: 0; }
+.portrait img {
+  width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;
+  background: var(--ac-paper-2); border: 1px solid var(--ac-line); border-radius: var(--ac-radius);
+}
+
+/* At a glance ----------------------------------------------- */
+.glance {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--ac-space-6);
+  margin: var(--ac-space-14) 0 0; padding-top: var(--ac-space-5);
+  border-top: 1px solid var(--ac-line);
+}
+.glance dt {
+  font-family: var(--ac-font-mono); font-size: var(--ac-text-micro);
+  text-transform: uppercase; letter-spacing: var(--ac-tracking-label); color: var(--ac-ink-3);
+}
+.glance dd { margin: var(--ac-space-1) 0 0; font-size: var(--ac-text-body); color: var(--ac-ink-0); }
+
+/* Story ----------------------------------------------------- */
+.story { max-width: 65ch; }
+.story p {
+  margin: 0 0 var(--ac-space-5);
+  font-family: var(--ac-font-serif); font-size: var(--ac-text-body-lg);
+  line-height: var(--ac-leading-prose); color: var(--ac-ink-1);
+}
+.story p:last-child { margin-bottom: 0; }
+
+/* Timeline chart -------------------------------------------- */
+.gantt { margin-inline: 0; margin-bottom: 0; }
+.g-row, .g-axis {
+  display: grid; grid-template-columns: 260px minmax(0, 1fr);
+  column-gap: var(--ac-space-4); align-items: center;
+}
+.g-row { padding: var(--ac-space-2) 0; }
+.g-group {
+  display: flex; align-items: center; gap: var(--ac-space-2);
+  margin-top: var(--ac-space-4); padding-bottom: var(--ac-space-1);
+  font-family: var(--ac-font-mono); font-size: var(--ac-text-micro);
+  text-transform: uppercase; letter-spacing: var(--ac-tracking-label); color: var(--ac-ink-2);
+}
+.g-group:first-of-type { margin-top: 0; }
+.swatch { width: var(--ac-space-3); height: var(--ac-space-3); }
+.swatch.study { background: var(--ac-cat-1-tint); border-left: var(--ac-rule-accent) solid var(--ac-cat-1); }
+.swatch.work  { background: var(--ac-cat-2-tint); border-left: var(--ac-rule-accent) solid var(--ac-cat-2); }
+.g-name { display: block; font-size: var(--ac-text-small); color: var(--ac-ink-0); }
+.g-meta { display: block; font-size: var(--ac-text-caption); color: var(--ac-ink-2); }
+.g-meta .mono { font-size: var(--ac-text-caption); }
+
+.g-track {
+  position: relative; height: var(--ac-space-6);
+  background-image: linear-gradient(to right, var(--ac-line) var(--ac-hairline), transparent var(--ac-hairline));
+  background-size: calc(100% / 7.5) 100%;
+}
+.g-track::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 85%;
+  border-left: 1px solid var(--ac-accent);
+}
+.g-bar {
+  position: absolute; top: var(--ac-space-1); bottom: var(--ac-space-1);
+  left: calc(var(--from) * 1%); width: calc((var(--to) - var(--from)) * 1%);
+}
+.g-bar.study { background: var(--ac-cat-1-tint); border-left: var(--ac-rule-accent) solid var(--ac-cat-1); }
+.g-bar.work  { background: var(--ac-cat-2-tint); border-left: var(--ac-rule-accent) solid var(--ac-cat-2); }
+.g-bar.planned { background: transparent; border: 1px dashed var(--ac-cat-1); }
+
+.g-ticks { position: relative; height: var(--ac-space-5); }
+.g-tick {
+  position: absolute; top: 0; left: calc(var(--at) * 1%);
+  padding-left: var(--ac-space-1); border-left: 1px solid var(--ac-line-strong);
+  font-family: var(--ac-font-mono); font-size: var(--ac-text-micro);
+  line-height: var(--ac-leading-mono); color: var(--ac-ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.g-tick.now { color: var(--ac-accent); border-left-color: var(--ac-accent); }
+.g-legend {
+  display: flex; flex-wrap: wrap; gap: var(--ac-space-2) var(--ac-space-5);
+  margin: var(--ac-space-5) 0 0; font-size: var(--ac-text-caption); color: var(--ac-ink-2);
+}
+.g-legend span { display: inline-flex; align-items: center; gap: var(--ac-space-2); }
+.key-now { width: 0; height: var(--ac-space-3); border-left: 1px solid var(--ac-accent); }
+.key-planned { width: var(--ac-space-5); height: var(--ac-space-3); border: 1px dashed var(--ac-cat-1); }
+
+/* Map ------------------------------------------------------- */
+.map-grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) 280px;
+  gap: var(--ac-space-6); align-items: start;
+}
+.map-frame {
+  height: 460px; overflow: hidden;
+  background: var(--ac-paper-2); border: 1px solid var(--ac-line); border-radius: var(--ac-radius);
+}
+.map-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+.map-note { margin: var(--ac-space-3) 0 0; font-size: var(--ac-text-caption); color: var(--ac-ink-2); }
+
+.stops { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ac-line); }
+.stops li { border-bottom: 1px solid var(--ac-line); }
+.stop {
+  display: grid; grid-template-columns: var(--ac-space-6) minmax(0, 1fr); gap: var(--ac-space-3);
+  align-items: start; width: 100%;
+  padding: var(--ac-space-3) var(--ac-space-2);
+  font: inherit; text-align: left; color: inherit;
+  background: transparent; border: 0; border-radius: 0; cursor: pointer;
+}
+.stop:hover, .stop[aria-current="true"] { background: var(--ac-paper-3); }
+.stop:focus-visible { outline: var(--ac-focus-ring) solid var(--ac-accent); outline-offset: calc(var(--ac-focus-ring) * -1); }
+.marker {
+  display: grid; place-items: center; width: var(--ac-space-6); height: var(--ac-space-6);
+  font-family: var(--ac-font-mono); font-size: var(--ac-text-micro); font-weight: var(--ac-weight-medium);
+  color: var(--ac-accent); border: 1px solid var(--ac-accent); border-radius: var(--ac-radius-sm);
+}
+.marker.is-now { background: var(--ac-accent); color: var(--ac-on-accent); }
+.stop-place { display: block; font-size: var(--ac-text-small); font-weight: var(--ac-weight-medium); color: var(--ac-ink-0); }
+.stop-what  { display: block; font-size: var(--ac-text-caption); color: var(--ac-ink-2); }
+.stop-meta  { display: block; margin-top: var(--ac-space-1); font-family: var(--ac-font-mono); font-size: var(--ac-text-micro); color: var(--ac-ink-3); }
+.btn-text {
+  margin-top: var(--ac-space-3); padding: var(--ac-space-1) 0;
+  font: inherit; font-size: var(--ac-text-small); font-weight: var(--ac-weight-medium);
+  color: var(--ac-accent); background: transparent; border: 0; cursor: pointer;
+}
+.btn-text:hover { color: var(--ac-accent-hover); }
+
+/* Outside work ---------------------------------------------- */
+.plain { max-width: 65ch; margin: 0; font-size: var(--ac-text-body-lg); line-height: var(--ac-leading-ui); color: var(--ac-ink-1); }
+
+/* Footer ---------------------------------------------------- */
+.foot {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--ac-space-4) var(--ac-space-8);
+  margin-top: var(--ac-space-14); padding-top: var(--ac-space-6);
+  border-top: 1px solid var(--ac-line);
+  font-size: var(--ac-text-small); color: var(--ac-ink-2);
+}
+.foot p { margin: 0; }
+.foot ul { display: flex; flex-wrap: wrap; gap: var(--ac-space-5); list-style: none; margin: 0; padding: 0; }
+
+/* Responsive ------------------------------------------------ */
+@media (max-width: 760px) {
+  .wrap { padding: 0 var(--ac-space-4) var(--ac-space-14); }
+  .hero { grid-template-columns: 1fr; gap: var(--ac-space-8); padding-top: var(--ac-space-10); }
+  .hero h1 { font-size: var(--ac-text-title); }
+  .portrait { max-width: 200px; }
+  .glance { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: var(--ac-space-10); }
+  section { margin-top: var(--ac-space-10); }
+  .g-row, .g-axis { grid-template-columns: 1fr; row-gap: var(--ac-space-1); }
+  .g-axis > :first-child { display: none; }
+  .map-grid { grid-template-columns: 1fr; }
+  .map-frame { height: 360px; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body, .stop, .theme-toggle { transition: background-color var(--ac-dur) var(--ac-ease), color var(--ac-dur) var(--ac-ease); }
+}
+
+/* ============================================================
+   Print: paper scope, copied from tokens.css
+   ============================================================ */
+@media print {
+  :root, :root[data-theme="light"], :root[data-theme="dark"] {
+    --ac-paper-0: #FFFFFF;
+    --ac-paper-1: #FFFFFF;
+    --ac-paper-2: #FFFFFF;
+    --ac-paper-3: #F0EAE0;
+    --ac-line: #D8CFC0;
+    --ac-line-strong: #D8CFC0;
+    --ac-ink-0: #1F1B15;
+    --ac-ink-1: #3D382F;
+    --ac-ink-2: #5E5649;
+    --ac-ink-3: #5E5649;
+    --ac-accent: #0F4E52;
+    --ac-accent-hover: #0F4E52;
+    --ac-on-accent: #FFFFFF;
+  }
+  .theme-toggle, .no-print { display: none; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: var(--ac-text-micro); color: var(--ac-ink-3); }
+  section { break-inside: avoid; }
+  h1, h2 { break-after: avoid; }
+  @page { margin: 18mm 16mm; }
+}
+</style>
+</head>
+<body>
+<div class="wrap" lang="en">
+
+  <header class="top">
+    <span class="wordmark">Arslan Chaudhry</span>
+    <button class="theme-toggle" type="button" aria-pressed="false">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="1.5" stroke-linejoin="round" stroke-linecap="butt" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"></circle><path d="M12 3v18"></path>
+        <path d="M12 6h4"></path><path d="M12 10h6"></path>
+        <path d="M12 14h6"></path><path d="M12 18h4"></path>
+      </svg>
+      Dark mode
+    </button>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <p class="eyebrow">M.Sc. BIPM · HWR Berlin · Winter term 2026/27</p>
+        <h1>From the lab bench to the backlog, and now to the data.</h1>
+        <p class="lead">Hi, I’m Arslan. I work as a Product Owner in Berlin, and this October I started the master’s in Business Intelligence &amp; Process Management at HWR Berlin. This page is the story of how I got here.</p>
+      </div>
+      <figure class="portrait">
+        <img src="images/portrait.jpg" alt="Portrait of Arslan Chaudhry in a blue suit" width="428" height="427">
+      </figure>
+    </div>
+
+    <dl class="glance">
+      <div><dt>Today</dt><dd>Product Owner at Scheer IMC</dd></div>
+      <div><dt>Studying</dt><dd>M.Sc. BIPM at HWR Berlin</dd></div>
+      <div><dt>Studied</dt><dd>Teacher training in Biology &amp; Chemistry at FU Berlin, Business Administration at HTW Berlin</dd></div>
+      <div><dt>Speaks</dt><dd>German, English, Urdu/Hindi</dd></div>
+    </dl>
+
+    <section aria-labelledby="story-h">
+      <p class="eyebrow">My path</p>
+      <h2 id="story-h">Six years of teacher training, then a change of course</h2>
+      <div class="story section-body">
+        <p>I started out wanting to teach. From 2014 to 2020 I studied biology and chemistry at Freie Universität Berlin to become a teacher, and worked in labs along the way. What I took from those years is a habit: keep learning new things myself. For a teacher that’s a must, and it has stayed one for me.</p>
+        <p>Over time I noticed that I cared less about what happens inside a cell than about how organisations decide what to build, and why. So in 2020 I changed course and enrolled in business administration at HTW Berlin. A year later I started working alongside my studies, as a product marketing consultant at the content agency Suxeedo, where every campaign was judged by its numbers.</p>
+        <p>That’s where product work caught me. In 2022 I joined PwC as a Product Owner and took a Workday add-on from concept to release. Since 2024 I’ve been a Product Owner at Scheer IMC, the company behind the IMC Learning Suite, a learning platform for large organisations. I work there remotely and I’m responsible for several product areas: dashboards, apps, generative AI and third-party integrations. Along the way I became a Certified Scrum Product Owner.</p>
+        <p>Which brings me to HWR. As a Product Owner, most of my decisions should rest on data, and too often I depend on someone else to pull it, model it or explain it. BIPM is how I want to close that gap: do the analysis myself in Python and SQL, and understand the processes behind the numbers. It’s the same habit I picked up in teacher training: keep learning new things myself.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="path-h">
+      <p class="eyebrow">The path at a glance</p>
+      <h2 id="path-h">Twelve years, three universities, three employers</h2>
+      <p class="lead">Study and work, year by year. The two first overlapped in 2021, when I started working during my bachelor’s.</p>
+
+      <figure class="gantt section-body" aria-labelledby="path-h">
+        <div class="g-axis" aria-hidden="true">
+          <span></span>
+          <div class="g-ticks">
+            <span class="g-tick" style="--at:0">2014</span>
+            <span class="g-tick" style="--at:13.333">2016</span>
+            <span class="g-tick" style="--at:26.667">2018</span>
+            <span class="g-tick" style="--at:40">2020</span>
+            <span class="g-tick" style="--at:53.333">2022</span>
+            <span class="g-tick" style="--at:66.667">2024</span>
+            <span class="g-tick now" style="--at:85">now</span>
+          </div>
+        </div>
+
+        <div class="g-group"><span class="swatch study"></span>Study</div>
+        <div class="g-row">
+          <div><span class="g-name">Freie Universität Berlin</span><span class="g-meta">Teacher training, Biology &amp; Chemistry · <span class="mono">2014–2020</span></span></div>
+          <div class="g-track" aria-hidden="true"><span class="g-bar study" style="--from:5;--to:45"></span></div>
+        </div>
+        <div class="g-row">
+          <div><span class="g-name">HTW Berlin</span><span class="g-meta">Business Administration · <span class="mono">2020–2024</span></span></div>
+          <div class="g-track" aria-hidden="true"><span class="g-bar study" style="--from:45;--to:68.333"></span></div>
+        </div>
+        <div class="g-row">
+          <div><span class="g-name">HWR Berlin</span><span class="g-meta">M.Sc. BIPM · <span class="mono">2026–2028</span></span></div>
+          <div class="g-track" aria-hidden="true"><span class="g-bar planned" style="--from:85;--to:95"></span></div>
+        </div>
+
+        <div class="g-group"><span class="swatch work"></span>Work</div>
+        <div class="g-row">
+          <div><span class="g-name">Suxeedo</span><span class="g-meta">Product Marketing Consultant · <span class="mono">2021–2022</span></span></div>
+          <div class="g-track" aria-hidden="true"><span class="g-bar work" style="--from:52.778;--to:58.333"></span></div>
+        </div>
+        <div class="g-row">
+          <div><span class="g-name">PwC Deutschland</span><span class="g-meta">Product Owner · <span class="mono">2022–2023</span></span></div>
+          <div class="g-track" aria-hidden="true"><span class="g-bar work" style="--from:58.333;--to:66.667"></span></div>
+        </div>
+        <div class="g-row">
+          <div><span class="g-name">Scheer IMC</span><span class="g-meta">Product Owner, remote · <span class="mono">since 2024</span></span></div>
+          <div class="g-track" aria-hidden="true"><span class="g-bar work" style="--from:66.667;--to:85"></span></div>
+        </div>
+
+        <figcaption class="g-legend">
+          <span><span class="key-now"></span>October 2026</span>
+          <span><span class="key-planned"></span>Planned, three semesters</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section aria-labelledby="map-h">
+      <p class="eyebrow">On the map</p>
+      <h2 id="map-h">Every stop fits inside Berlin</h2>
+      <p class="lead">My path has covered more ground between subjects than between places: the two stops farthest apart are only 16&nbsp;km from each other. Select a stop to find it on the map.</p>
+
+      <div class="map-grid section-body">
+        <div>
+          <div class="map-frame">
+            <iframe src="map.html" title="Map of the six stops on my path through Berlin" loading="lazy"></iframe>
+          </div>
+          <p class="map-note">Built in Python with folium and OpenStreetMap data, no API key needed. Source: <a href="https://github.com/ArslanChaudhry65/BIPM/blob/main/myJourney.ipynb">myJourney.ipynb</a></p>
+        </div>
+
+        <div>
+          <ol class="stops">
+            <li><button class="stop" type="button" data-index="0"><span class="marker">01</span><span><span class="stop-place">Freie Universität Berlin</span><span class="stop-what">Teacher training, Biology &amp; Chemistry</span><span class="stop-meta">2014–2020 · Dahlem</span></span></button></li>
+            <li><button class="stop" type="button" data-index="1"><span class="marker">02</span><span><span class="stop-place">HTW Berlin</span><span class="stop-what">Business Administration</span><span class="stop-meta">2020–2024 · Karlshorst</span></span></button></li>
+            <li><button class="stop" type="button" data-index="2"><span class="marker">03</span><span><span class="stop-place">Suxeedo</span><span class="stop-what">Product Marketing Consultant</span><span class="stop-meta">2021–2022 · Mitte</span></span></button></li>
+            <li><button class="stop" type="button" data-index="3"><span class="marker">04</span><span><span class="stop-place">PwC Deutschland</span><span class="stop-what">Product Owner</span><span class="stop-meta">2022–2023 · Mitte</span></span></button></li>
+            <li><button class="stop" type="button" data-index="4"><span class="marker">05</span><span><span class="stop-place">Scheer IMC</span><span class="stop-what">Product Owner, remote</span><span class="stop-meta">since 2024 · Prenzlauer Berg</span></span></button></li>
+            <li><button class="stop" type="button" data-index="5"><span class="marker is-now">06</span><span><span class="stop-place">HWR Berlin</span><span class="stop-what">M.Sc. BIPM</span><span class="stop-meta">since 2026 · Schöneberg</span></span></button></li>
+          </ol>
+          <button class="btn-text show-all no-print" type="button">Show the whole path</button>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="off-h">
+      <p class="eyebrow">Outside work</p>
+      <h2 id="off-h">Away from the backlog</h2>
+      <div class="section-body">
+        <p class="plain">Since 2025 I’ve volunteered in the children’s library at the Kurt-Tucholsky-Bibliothek in Berlin.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Built with HTML, CSS and Python, hosted on GitHub Pages.</p>
+    <ul>
+      <li><a href="https://arslanchaudhry.com">arslanchaudhry.com</a></li>
+      <li><a href="https://github.com/ArslanChaudhry65">GitHub</a></li>
+    </ul>
+  </footer>
+</div>
+
+<script>
+  const root = document.documentElement;
+  const toggle = document.querySelector('.theme-toggle');
+  const frame = document.querySelector('.map-frame iframe');
+  const stops = document.querySelectorAll('.stop');
+
+  // The map is its own page inside an iframe; it listens for these messages.
+  function tellMap(message) {
+    if (frame && frame.contentWindow) frame.contentWindow.postMessage(message, '*');
+  }
+
+  function setTheme(mode) {
+    root.dataset.theme = mode;
+    toggle.setAttribute('aria-pressed', String(mode === 'dark'));
+    tellMap({ type: 'theme', mode: mode });
+  }
+
+  setTheme(matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  toggle.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  frame.addEventListener('load', () => tellMap({ type: 'theme', mode: root.dataset.theme }));
+
+  stops.forEach((stop) => stop.addEventListener('click', () => {
+    stops.forEach((s) => s.removeAttribute('aria-current'));
+    stop.setAttribute('aria-current', 'true');
+    tellMap({ type: 'focus', index: Number(stop.dataset.index) });
+  }));
+
+  document.querySelector('.show-all').addEventListener('click', () => {
+    stops.forEach((s) => s.removeAttribute('aria-current'));
+    tellMap({ type: 'reset' });
+  });
+</script>
+</body>
+</html>

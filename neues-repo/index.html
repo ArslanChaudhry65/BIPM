@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My BIPM Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "IBM Plex Sans", Arial, Helvetica, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+      color: #3D382F;
+      background-color: #FBF8F3;
+    }
+
+    h1, h2 {
+      color: #1F1B15;
+      font-weight: 500;
+    }
+
+    h2 {
+      margin-top: 40px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #E7E0D5;
+    }
+
+    a {
+      color: #135E63;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .header img {
+      width: 180px;
+      border-radius: 4px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 8px;
+      border: 1px solid #E7E0D5;
+      text-align: left;
+    }
+
+    th {
+      background-color: #DFEDED;
+      color: #0C4448;
+      font-weight: 500;
+    }
+
+    td:first-child {
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    tr:nth-child(even) {
+      background-color: #F7F3EC;
+    }
+
+    iframe {
+      box-sizing: border-box;
+      width: 100%;
+      height: 450px;
+      border: 1px solid #E7E0D5;
+      border-radius: 4px;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #756D62;
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img src="portrait.jpg" alt="Photo of Arslan Chaudhry">
+    <div>
+      <h1>Hi, I'm Arslan!</h1>
+      <p>I work as a Product Owner in Berlin and since October 2026 I'm a student in the master's program Business Intelligence &amp; Process Management (BIPM) at HWR Berlin.</p>
+    </div>
+  </div>
+
+  <h2>About me</h2>
+  <p>From 2014 to 2020 I studied biology and chemistry at Freie Universität Berlin because I wanted to become a teacher. During that time I also worked in labs. After some years I noticed that I was more interested in business and in how companies decide which products they build. So in 2020 I switched to Business Administration at HTW Berlin.</p>
+  <p>In 2021 I started working next to my studies as a Product Marketing Consultant at the content agency Suxeedo. In 2022 I joined PwC as a Product Owner and worked on a Workday add-on. Since 2024 I'm a Product Owner at Scheer IMC. I work remotely on the IMC Learning Suite and I'm responsible for dashboards, apps, generative AI and third-party integrations. I'm also a Certified Scrum Product Owner.</p>
+  <p>In my job many decisions should be based on data, but often I need other people to get the data or analyse it for me. That's why I started BIPM. I want to learn how to work with Python and SQL myself and to understand the processes behind the numbers.</p>
+  <p>I speak German, English and Urdu/Hindi.</p>
+
+  <h2>My path</h2>
+  <table>
+    <tr>
+      <th>Years</th>
+      <th>Where</th>
+      <th>What</th>
+    </tr>
+    <tr>
+      <td>2014-2020</td>
+      <td>Freie Universität Berlin</td>
+      <td>Teacher training, Biology &amp; Chemistry</td>
+    </tr>
+    <tr>
+      <td>2020-2024</td>
+      <td>HTW Berlin</td>
+      <td>B.A. Business Administration</td>
+    </tr>
+    <tr>
+      <td>2021-2022</td>
+      <td>Suxeedo</td>
+      <td>Product Marketing Consultant</td>
+    </tr>
+    <tr>
+      <td>2022-2023</td>
+      <td>PwC Deutschland</td>
+      <td>Product Owner</td>
+    </tr>
+    <tr>
+      <td>since 2024</td>
+      <td>Scheer IMC</td>
+      <td>Product Owner (remote)</td>
+    </tr>
+    <tr>
+      <td>since 2026</td>
+      <td>HWR Berlin</td>
+      <td>M.Sc. Business Intelligence &amp; Process Management</td>
+    </tr>
+  </table>
+
+  <h2>My journey on a map</h2>
+  <p>All stops of my journey are in Berlin. I made the map in Python with folium, the code is in <a href="https://github.com/ArslanChaudhry65/BIPM/blob/main/myJourney.ipynb">myJourney.ipynb</a>.</p>
+  <iframe src="map.html"></iframe>
+
+  <h2>Outside of work</h2>
+  <p>Since 2025 I volunteer in the children's library of the Kurt-Tucholsky-Bibliothek in Berlin.</p>
+
+  <footer>
+    <p>Arslan Chaudhry | <a href="https://arslanchaudhry.com">arslanchaudhry.com</a> | <a href="https://github.com/ArslanChaudhry65">GitHub</a></p>
+  </footer>
+
+</body>
+</html>
